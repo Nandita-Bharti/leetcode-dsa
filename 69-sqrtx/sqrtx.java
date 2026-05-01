@@ -2,8 +2,8 @@ class Solution {
     public int mySqrt(int x) {
         long root = 0;
         for(long i = 0; i <= x; i++){
-            long square = i * i;
-            if(square > x) break;
+            long s = i * i;
+            if(s > x) break;
             root = i;
             
         }
