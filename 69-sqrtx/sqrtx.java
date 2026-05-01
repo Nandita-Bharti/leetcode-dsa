@@ -1,12 +1,22 @@
 class Solution {
     public int mySqrt(int x) {
-        long root = 0;
-        for(long i = 0; i <= x; i++){
-            long s = i * i;
-            if(s > x) break;
-            root = i;
+
+        // Brute Force -> o(root of n)
+        // long root = 0;
+        // for(long i = 0; i <= x; i++){
+        //     long square = i * i;
+        //     if(square > x) break;
+        //     root = i;
             
+        // }
+        // return (int)root;
+        long low = 0 , high = x;
+        while(low <= high){
+            long mid = low + (high - low)/2;
+            if(mid*mid == x) return (int)mid;
+            else if(mid*mid > x) high = mid-1;
+            else low = mid+1;
         }
-        return (int)root;
+        return (int)high;
     }
 }
