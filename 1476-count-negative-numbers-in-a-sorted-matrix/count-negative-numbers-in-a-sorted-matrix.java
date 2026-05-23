@@ -14,6 +14,7 @@ class Solution {
     for(int i = 0 ; i < row ; i++){
         int lo = 0 , high = col-1;
         while(lo <= high){
+            if(grid[i][0] < 0) break;
             int mid = (lo+high)/2;
             if(grid[i][mid] < 0) high = mid-1;
             else lo = mid+1;
