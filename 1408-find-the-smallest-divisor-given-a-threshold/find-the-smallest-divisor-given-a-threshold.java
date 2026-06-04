@@ -18,7 +18,8 @@ class Solution {
     int findSum(int mid , int[] nums){
         int sum = 0;
         for(int ele : nums){
-            sum += (ele + mid - 1) / mid;
+            //sum += (ele + mid - 1) / mid;
+            sum += Math.ceil((double)ele / (double)mid);
         }
         return sum;
     }
