@@ -16,7 +16,7 @@ class Solution {
         if (expo % 2 == 0) {
             return halfSquared;
         } else {
-            return ((base % mod) * halfSquared) % mod;
+            return (base * halfSquared) % mod;
         }
     }
 }
