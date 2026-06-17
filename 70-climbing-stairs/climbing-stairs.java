@@ -11,15 +11,25 @@ class Solution {
     //     return way1+way2;
 
     //Method 2 -> Memoizaton TC - 0() , SC - 0()
-        int[] dp = new int[n+1];
-        return fibo(0,n,dp);
+    //     int[] dp = new int[n+1];
+    //     return fibo(0,n,dp);
+    // }
+    // public int fibo(int idx, int n , int[] dp){
+    //     if(idx == n) return 1;
+    //     if(idx > n) return 0;
+    //     if(dp[idx] != 0) return dp[idx];
+    //     int ans = fibo(idx+1 , n , dp) + fibo(idx+2 , n , dp);
+    //     dp[idx] = ans;
+    //     return ans;
+
+
+    if(n <= 1) return n;
+    int prev1 = 1 , prev2 = 1;
+    for(int i = 2; i <= n; i++){
+        int curr = prev1 + prev2;
+        prev1 = prev2;
+        prev2 = curr;
     }
-    public int fibo(int idx, int n , int[] dp){
-        if(idx == n) return 1;
-        if(idx > n) return 0;
-        if(dp[idx] != 0) return dp[idx];
-        int ans = fibo(idx+1 , n , dp) + fibo(idx+2 , n , dp);
-        dp[idx] = ans;
-        return ans;
+    return prev2;
     }
 }
