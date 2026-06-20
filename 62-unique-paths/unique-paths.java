@@ -4,18 +4,35 @@ class Solution {
         // if(m == 1 || n == 1) return 1;
         // return uniquePaths(m-1,n) + uniquePaths(m,n-1);
 
-        //Memoization
-        int[][] dp = new int[m][n];
-        return f(m-1 , n-1 ,dp);
+    //Memoization
+    //     int[][] dp = new int[m][n];
+    //     return f(m-1 , n-1 ,dp);
 
-    }
-    int f(int row , int col , int[][] dp){
-        if(row == 0 && col == 0) return 1;
-        if(row < 0 || col < 0) return 0;
-        if(dp[row][col] != 0) return dp[row][col];
-        int up = f(row-1 , col , dp);
-        int right = f(row , col-1 , dp);
-        return dp[row][col] = up+right;
+    // }
+    // int f(int row , int col , int[][] dp){
+    //     if(row == 0 && col == 0) return 1;
+    //     if(row < 0 || col < 0) return 0;
+    //     if(dp[row][col] != 0) return dp[row][col];
+    //     int up = f(row-1 , col , dp);
+    //     int right = f(row , col-1 , dp);
+    //     return dp[row][col] = up+right;
+
+    //Space Optimization
+        int[] prev = new int[n];
+        for(int i = 0; i < m; i++){
+            int[] curr = new int[n];
+            for(int j = 0; j < n; j++){
+                if(i == 0 && j == 0) curr[j] = 1;
+                else{
+                  int up = 0 , left = 0;
+                  if(i > 0) up = prev[j];
+                  if(j > 0) left = curr[j-1];
+                  curr[j] = up+left;
+                }
+            }
+            prev = curr;
+        }
+        return prev[n-1];
     }
 }
         //Method 2
