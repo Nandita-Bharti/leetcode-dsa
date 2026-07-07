@@ -12,7 +12,7 @@ class Solution {
                     curr[j] = Math.max(prices[i]+next[j+1] , next[j]);
                 }
             }
-            next =curr;
+            next = curr;
         }
         return curr[0];
     }
