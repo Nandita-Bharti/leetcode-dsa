@@ -35,7 +35,7 @@ class Solution {
             int currLevel = p.level;
 
             if(currLevel != prevLevel){
-                result.add(new ArrayList<>(levelList));
+                result.add(0 , new ArrayList<>(levelList));
                 levelList.clear();
             }
 
@@ -47,8 +47,8 @@ class Solution {
 
             prevLevel = currLevel;
         }
-        result.add(new ArrayList<>(levelList));
-        Collections.reverse(result);
+        result.add(0 , new ArrayList<>(levelList));
+        //Collections.reverse(result);
 
         return result;
     }
