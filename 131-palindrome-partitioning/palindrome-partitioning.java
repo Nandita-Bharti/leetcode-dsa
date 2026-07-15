@@ -5,7 +5,7 @@ class Solution {
         return ans;
     }
 
-    void backtrack(int start,
+    private void backtrack(int start,
                            String s,
                            List<String> path,
                            List<List<String>> ans) {
