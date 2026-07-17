@@ -1,3 +1,4 @@
+//Space optimization
 class Solution {
     public int minimumTotal(List<List<Integer>> triangle) {
         int n = triangle.size(); 
@@ -7,13 +8,13 @@ class Solution {
         }
 
         for(int i = n-2; i >= 0; i--){
-            int[] curr = new int[i+1];
+            //int[] curr = new int[i+1];
             for(int j = 0; j <= i; j++){
                 int down = prev[j];
                 int diagonal = prev[j+1];
-                curr[j] = triangle.get(i).get(j) + Math.min(down, diagonal);
+                prev[j] = triangle.get(i).get(j) + Math.min(down, diagonal);
             }
-            prev = curr;
+            //prev = curr;
         }
         return prev[0];
     }
