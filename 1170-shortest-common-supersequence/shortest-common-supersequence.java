@@ -15,8 +15,6 @@ class Solution {
                 }
             }
         }
-
-        // Build SCS
         int i = n, j = m;
         StringBuilder ans = new StringBuilder();
 
@@ -35,8 +33,6 @@ class Solution {
                 j--;
             }
         }
-
-        // remaining chars
         while(i > 0) {
             ans.append(str1.charAt(i - 1));
             i--;
