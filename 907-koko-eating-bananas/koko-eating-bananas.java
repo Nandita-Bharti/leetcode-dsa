@@ -16,6 +16,7 @@ class Solution {
         return speed;
     }
     long totalHours(int mid , int[] piles){
+        //another ceil method
         long cal_hour = 0;
         for(int ele : piles){
             if(ele % mid != 0){
