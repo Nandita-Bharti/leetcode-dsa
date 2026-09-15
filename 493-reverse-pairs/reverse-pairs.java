@@ -44,7 +44,7 @@ class Solution {
         int cnt = 0;
         int right = mid+1;
         for(int i = low; i <= mid; i++){
-            while(right <= high && nums[i] > (long) 2L * nums[right]) right++;
+            while(right <= high && nums[i] > (long) 2 * nums[right]) right++;
             cnt += (right - (mid+1));
         }
         return cnt;
