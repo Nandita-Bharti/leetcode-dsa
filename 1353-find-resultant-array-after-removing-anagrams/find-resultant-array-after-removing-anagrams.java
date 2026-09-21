@@ -8,8 +8,8 @@ class Solution {
             String curr = new String(c);
             if(!prev.equals(curr)){
                 ans.add(s);
-                prev = curr;
             }
+            prev = curr;
         }
         return ans;
     }
