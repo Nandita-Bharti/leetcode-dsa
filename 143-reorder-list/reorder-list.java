@@ -23,16 +23,19 @@ class Solution {
     }
 
     public void reorderList(ListNode head) {
+        if(head == null || head.next == null) return;
         ListNode head1 = head;
         ListNode slow = head;
         ListNode fast = head;
-        while(fast.next != null && fast.next.next != null){
+        ListNode prev = null;
+        while(fast != null && fast.next != null){
+            prev = slow;
             slow = slow.next;
             fast = fast.next.next;
         }
-        ListNode head2 = slow.next;
-        slow.next = null;
-        head2 = reverse(head2);
+        prev.next = null;
+        ListNode head2 = reverse(slow);
+
         ListNode t1 = head1;
         ListNode t2 = head2;
         ListNode dummy = new ListNode(-1);
