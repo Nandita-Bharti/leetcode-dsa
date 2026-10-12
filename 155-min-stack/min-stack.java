@@ -1,37 +1,61 @@
+//Approach 1: Two Stacks
+// class MinStack {
+//     Stack<Integer> minStack;
+//     Stack<Integer> st;
+
+//     public MinStack() {
+//         st =  new Stack<>();
+//         minStack =  new Stack<>();
+//     }
+    
+//     public void push(int val) {
+//         st.push(val);
+//         if(minStack.size() == 0 || val < minStack.peek()) minStack.push(val);
+//         else minStack.push(minStack.peek());
+//     }
+    
+//     public void pop() {
+//         st.pop();
+//         minStack.pop();
+//     }
+    
+//     public int top() {
+//         return st.peek();
+//     }
+    
+//     public int getMin() {
+//         return minStack.peek();
+//     }
+// }
+
+
+//Single Stack with Pairs (Object-Oriented)
 class MinStack {
-    Stack<Integer> minStack;
-    Stack<Integer> st;
+    private Stack<int[]> stack; // stores [value, current_min]
 
     public MinStack() {
-        st =  new Stack<>();
-        minStack =  new Stack<>();
+        stack = new Stack<>();
     }
     
     public void push(int val) {
-        st.push(val);
-        if(minStack.size() == 0 || val < minStack.peek()) minStack.push(val);
-        else minStack.push(minStack.peek());
+        if (stack.isEmpty()) {
+            stack.push(new int[]{val, val});
+        } else {
+            int currentMin = Math.min(val, stack.peek()[1]);
+            stack.push(new int[]{val, currentMin});
+        }
     }
     
     public void pop() {
-        st.pop();
-        minStack.pop();
+        stack.pop();
     }
     
     public int top() {
-        return st.peek();
+        return stack.peek()[0];
     }
     
     public int getMin() {
-        return minStack.peek();
+        return stack.peek()[1];
     }
 }
 
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(val);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
- */
