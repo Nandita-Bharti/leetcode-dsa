@@ -1,21 +1,14 @@
-import java.util.HashMap;
-import java.util.Map;
-
-class LRUCache {
-    
-    // Define the Doubly Linked List Node structure
+class LRUCache {   
     class Node {
         int key;
         int val;
         Node prev;
-        Node next;
-        
+        Node next;        
         public Node(int key, int val) {
             this.key = key;
             this.val = val;
         }
-    }
-    
+    }    
     private int capacity;
     private Map<Integer, Node> map;
     private Node head;
@@ -46,7 +39,7 @@ class LRUCache {
     }
     
     public void put(int key, int value) {
-        // If key already exists, update its value and move to front
+        // If key already exists, update its value , remove it and move to front
         if (map.containsKey(key)) {
             Node node = map.get(key);
             node.val = value;
@@ -67,13 +60,12 @@ class LRUCache {
         insertToFront(newNode);
         map.put(key, newNode);
     }
-    
-    // --- Helper Methods for Doubly Linked List ---
-    
     // Remove a node from its current position
     private void remove(Node node) {
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
+        Node oldPrev = node.prev;
+        Node oldNext = node.next;
+        oldPrev.next = oldNext;
+        oldNext.prev = oldPrev;
     }
     
     // Insert a node right after the dummy head (making it the Most Recently Used)
